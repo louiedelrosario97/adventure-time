@@ -4,15 +4,40 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class AdventureTime
-{
-    static void main();
-    {
-        loadAdventure();
+public class AdventureTime {
+
+    static ArrayList<StepClass> adventureSteps;
+
+    static void main() {
+        adventureSteps = loadAdventureTime();
+        homeScreen();
     }
-    public static void loadAdventure()
-    {
+    public static void homeScreen() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("Welcome to Adventure Time!");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("Press (P) to play: ");
+        System.out.println("Press (Q) to quit: " );
+        String choice = scanner.nextLine().toUpperCase();
+        System.out.println();
+        if (choice.equals("P")) {
+            gameScreen(1);
+        }
+    }
+    public static void gameScreen(int id) {
+        for (int i = 0; i < adventureSteps.size(); i++) {
+            adventureSteps adventuresteps = adventureSteps.get(i);
+            if(adventureSteps.getId() == id){
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+            }
+    }
         ArrayList<StepClass> adventureSteps = new ArrayList<>(); // Array lists can change index amount as needed
 
         try
