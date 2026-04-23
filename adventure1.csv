@@ -1,4 +1,4 @@
-id|storyText|option1Text|option1NextId|option2Text|option2NextId
+sceneId|storyText|option1Text|option1NextId|option2Text|option2NextId
 1|You wake up at the edge of a dark forest. A narrow trail leads into the trees, and a dirt road heads toward a distant village.|Enter the forest|2|Walk to the village|3
 2|The forest is quiet except for birds and rustling leaves. After a few minutes, you find a fork in the trail.|Take the left path|4|Take the right path|5
 3|You arrive at the village gate. The market is busy, and a guard waves you over.|Talk to the guard|6|Go into the market|7

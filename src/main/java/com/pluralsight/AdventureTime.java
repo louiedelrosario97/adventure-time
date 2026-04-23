@@ -58,18 +58,18 @@ public class AdventureTime {
         ArrayList<Scene> scenes = new ArrayList<>(); // Array lists can change index quantity as needed
         try
         {
-            FileReader fileReader = new FileReader("adventure1.csv"); // Creat FileReader class to reach file
+            FileReader fileReader = new FileReader("adventure1.csv"); // Create FileReader class to reach file
             BufferedReader bufferedReader = new BufferedReader(fileReader); // Formats the FileReader to read efficiently
 
-            String line = bufferedReader.readLine(); // Skips the first line in the file from being read (header)
+            String header = bufferedReader.readLine(); // BufferedReader reads first line of .csv, the header (we don't want to print this!)
+            String line = bufferedReader.readLine();   // BufferedReader is now reading the first line we want to print (line 2) we declare String line as our variable.
 
-
-            while((line = bufferedReader.readLine()) != null) // Loops to each line of the file until next line's value is null
+            while(line != null) // As long as 'line' has a value inside it, it will print below.
             {
-                System.out.println(line); // Prints variable 'line' which we assigned to hold and read the text of 'bufferedReader' on line 20
+                System.out.println(line);  // Variable 'line' holds the text of 'bufferedReader' and we display it by printing using System.out.println();
 
                 String[]columns = line.split("\\|");
-                int id = Integer.parseInt(columns[0]);
+                int sceneId = Integer.parseInt(columns[0]);
                 String storyText = columns[1];
                 String option1Text = columns [2];
                 int option1NextId = Integer.parseInt(columns [3]);
@@ -77,7 +77,7 @@ public class AdventureTime {
                 int option2NextId = Integer.parseInt(columns[5]);
 
                 // create a Step from the data in the current line
-                Scene scene = new Scene(id, storyText, option1Text, option1NextId, option2Text, option2NextId );
+                Scene scene = new Scene(sceneId, storyText, option1Text, option1NextId, option2Text, option2NextId );
 
                 scenes.add(scene); // Put 'stepClass' into an array list
             }

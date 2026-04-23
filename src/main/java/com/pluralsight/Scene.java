@@ -2,7 +2,7 @@ package com.pluralsight;
 
 public class Scene
 {       // Data Members
-    private int id;
+    private int sceneId;
     private String storyText;
     private String option1Text;
     private int option1NextId;
@@ -11,7 +11,7 @@ public class Scene
 
     public Scene(int id, String storyText, String option1Text, int option1NextId, String option2Text, int option2NextId)
     {   // Constructors
-        this.id = id;
+        this.sceneId = id;
         this.storyText = storyText;
         this.option1Text = option1Text;
         this.option1NextId = option1NextId;
@@ -19,7 +19,7 @@ public class Scene
         this.option2NextId = option2NextId;
     }
          // Getters
-    public int getId() { return id; }
+    public int getId() { return sceneId; }
     public String getStoryText() { return storyText; }
     public String getOption1Text() { return option1Text; }
     public int getOption1NextId() { return option1NextId; }
@@ -27,7 +27,7 @@ public class Scene
     public int getOption2NextId() { return option2NextId; }
 
         // Setters
-    public void setId(int id) { this.id = id;}
+    public void setId(int id) { this.sceneId = id;}
     public void setStoryText(String storyText) { this.storyText = storyText; }
     public void setOption1Text(String option1Text) { this.option1Text = option1Text; }
     public void setOption1NextId(int option1NextId) { this.option1NextId = option1NextId; }
