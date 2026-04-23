@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 public class AdventureTime {
 
-    static ArrayList<StepClass> steps;
+    static ArrayList<Scene> scenes;
 
     static void main(String[] args)
     {
-        steps = loadAdventure();
+        scenes = loadAdventure();
         homeScreen();
     }
     public static void homeScreen()
@@ -41,21 +41,21 @@ public class AdventureTime {
     }
     public static void gameScreen(int id)
     {
-        for (int i = 0; i < steps.size(); i++) {
-            StepClass stepClass = steps.get(i);
-            if (stepClass.getId() == id) {
+        for (int i = 0; i < scenes.size(); i++) {
+            Scene scene = scenes.get(i);
+            if (scene.getId() == id) {
                 System.out.println();
-                System.out.println("Story text: " + stepClass.getStoryText());
-                System.out.println("1) " + stepClass.getOption1Text());
-                System.out.println("2) " + stepClass.getOption2Text());
+                System.out.println("Story text: " + scene.getStoryText());
+                System.out.println("1) " + scene.getOption1Text());
+                System.out.println("2) " + scene.getOption2Text());
                 System.out.print("Choose: ");
             }
         }
     }
-    public static ArrayList <StepClass> loadAdventure()
+    public static ArrayList <Scene> loadAdventure()
     {
         // Create the "container"
-        ArrayList<StepClass> steps = new ArrayList<>(); // Array lists can change index quantity as needed
+        ArrayList<Scene> scenes = new ArrayList<>(); // Array lists can change index quantity as needed
         try
         {
             FileReader fileReader = new FileReader("adventure1.csv"); // Creat FileReader class to reach file
@@ -77,9 +77,9 @@ public class AdventureTime {
                 int option2NextId = Integer.parseInt(columns[5]);
 
                 // create a Step from the data in the current line
-                StepClass stepClass = new StepClass(id, storyText, option1Text, option1NextId, option2Text, option2NextId );
+                Scene scene = new Scene(id, storyText, option1Text, option1NextId, option2Text, option2NextId );
 
-                steps.add(stepClass); // Put 'stepClass' into an array list
+                scenes.add(scene); // Put 'stepClass' into an array list
             }
             bufferedReader.close();
         }
@@ -87,7 +87,7 @@ public class AdventureTime {
         {
             System.out.println(ex.getMessage());
         }
-        return steps;
+        return scenes;
     }
 }
 
