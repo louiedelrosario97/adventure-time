@@ -9,7 +9,7 @@ public class AdventureTime {
 
     static ArrayList<StepClass> steps;
 
-    static void main()
+    static void main(String[] args)
     {
         steps = loadAdventure();
         homeScreen();
@@ -28,7 +28,7 @@ public class AdventureTime {
         {
             gameScreen(1);
         }
-        else if (selection.equals("Q"));
+        else if (selection.equals("Q"))
         {
             System.out.println("Oh...ok... till next time traveler. (is depressed)");
             System.exit(0);
@@ -43,11 +43,11 @@ public class AdventureTime {
     {
         for (int i = 0; i < steps.size(); i++) {
             StepClass stepClass = steps.get(i);
-            if (steps.getId() == id) {
+            if (stepClass.getId() == id) {
                 System.out.println();
-                System.out.println("Story text: " + step.getStoryText());
-                System.out.println("1) " + step.getOption1Text());
-                System.out.println("2) " + step.getOption2Text());
+                System.out.println("Story text: " + stepClass.getStoryText());
+                System.out.println("1) " + stepClass.getOption1Text());
+                System.out.println("2) " + stepClass.getOption2Text());
                 System.out.print("Choose: ");
             }
         }
@@ -67,7 +67,6 @@ public class AdventureTime {
             while((line = bufferedReader.readLine()) != null) // Loops to each line of the file until next line's value is null
             {
                 System.out.println(line); // Prints variable 'line' which we assigned to hold and read the text of 'bufferedReader' on line 20
-                line = bufferedReader.readLine(); // Goes to next line in file to print
 
                 String[]columns = line.split("\\|");
                 int id = Integer.parseInt(columns[0]);
