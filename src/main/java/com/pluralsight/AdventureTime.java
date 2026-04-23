@@ -2,44 +2,60 @@ package com.pluralsight;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdventureTime {
 
-    static ArrayList<StepClass> adventureSteps;
+    static ArrayList<StepClass> steps;
 
-    static void main() {
-        adventureSteps = loadAdventureTime();
+    static void main()
+    {
+        steps = loadAdventure();
         homeScreen();
     }
-    public static void homeScreen() {
+    public static void homeScreen()
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("Welcome to Adventure Time!");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("Press (P) to play: ");
         System.out.println("Press (Q) to quit: " );
-        String choice = scanner.nextLine().toUpperCase();
-        System.out.println();
-        if (choice.equals("P")) {
+        String selection = scanner.nextLine().toUpperCase().trim();
+
+        if (selection.equals("P"))
+        {
             gameScreen(1);
         }
+        else if (selection.equals("Q"));
+        {
+            System.out.println("Oh...ok... till next time traveler. (is depressed)");
+            System.exit(0);
+        }
+        else
+        {
+            System.out.println("You're lucky I'm a patient person. Let's try that again.");
+            homeScreen();
+        }
     }
-    public static void gameScreen(int id) {
-        for (int i = 0; i < adventureSteps.size(); i++) {
-            adventureSteps adventuresteps = adventureSteps.get(i);
-            if(adventureSteps.getId() == id){
-                System.out.println("");
-                System.out.println("");
-                System.out.println("");
-                System.out.println("");
-                System.out.println("");
+    public static void gameScreen(int id)
+    {
+        for (int i = 0; i < steps.size(); i++) {
+            StepClass stepClass = steps.get(i);
+            if (steps.getId() == id) {
+                System.out.println();
+                System.out.println("Story text: " + step.getStoryText());
+                System.out.println("1) " + step.getOption1Text());
+                System.out.println("2) " + step.getOption2Text());
+                System.out.print("Choose: ");
             }
+        }
     }
-        ArrayList<StepClass> adventureSteps = new ArrayList<>(); // Array lists can change index amount as needed
-
+    public static ArrayList <StepClass> loadAdventure()
+    {
+        // Create the "container"
+        ArrayList<StepClass> steps = new ArrayList<>(); // Array lists can change index quantity as needed
         try
         {
             FileReader fileReader = new FileReader("adventure1.csv"); // Creat FileReader class to reach file
@@ -47,9 +63,8 @@ public class AdventureTime {
 
             String line = bufferedReader.readLine(); // Skips the first line in the file from being read (header)
 
-            line = bufferedReader.readLine();
 
-            while(line != null) // Loops to each line of the file until next line's value is null
+            while((line = bufferedReader.readLine()) != null) // Loops to each line of the file until next line's value is null
             {
                 System.out.println(line); // Prints variable 'line' which we assigned to hold and read the text of 'bufferedReader' on line 20
                 line = bufferedReader.readLine(); // Goes to next line in file to print
@@ -65,14 +80,15 @@ public class AdventureTime {
                 // create a Step from the data in the current line
                 StepClass stepClass = new StepClass(id, storyText, option1Text, option1NextId, option2Text, option2NextId );
 
-                adventureSteps.add(stepClass); // Put 'stepClass' into an array list
+                steps.add(stepClass); // Put 'stepClass' into an array list
             }
             bufferedReader.close();
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-
+            System.out.println(ex.getMessage());
         }
+        return steps;
     }
 }
 
